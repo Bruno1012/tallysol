@@ -56,7 +56,7 @@ export default function HomeScreen() {
           </>
         ) : null}
         <View style={{ flex: account ? 0 : 1, alignItems: 'center', justifyContent: 'center' }}>
-          {!account ? <AppHeader /> : null}
+          {!account ? <AppHeader large /> : null}
         </View>
         <AccountFeatureConnectPrompt />
       </ScrollView>
