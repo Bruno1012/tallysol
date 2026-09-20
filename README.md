@@ -32,10 +32,10 @@ Built with React Native, Expo and Mobile Wallet Adapter. Tested on a physical So
 npm install
 ```
 
-Create a `.env` file in the project root with your own free Helius key (used for the mainnet SKR check):
+Copy `.env.example` to `.env` and add your own free Helius key (used for the mainnet SKR check). Without a key the app still runs, but the Plus check shows an error.
 
-```
-EXPO_PUBLIC_HELIUS_API_KEY=your-key-here
+```bash
+copy .env.example .env
 ```
 
 ```bash
