@@ -4,6 +4,7 @@ import { appStyles } from '@/constants/app-styles'
 import { CURRENCIES } from '@/constants/currencies'
 import { useAccountGetBalance } from '@/features/account/use-account-get-balance'
 import { useAccountGetTokenBalance } from '@/features/account/use-account-get-token-balance'
+import { useNetwork } from '@/features/network/use-network'
 import { usePrices } from '@/utils/use-prices'
 import { lamportsToSol } from '@/utils/lamports-to-sol'
 
@@ -17,6 +18,7 @@ export function AccountFeaturePortfolioValue({ address }: { address: Address }) 
   const { data: usdtBalance } = useAccountGetTokenBalance({ address, currency: USDT })
   const { data: skrBalance } = useAccountGetTokenBalance({ address, currency: SKR })
   const { data: prices, isLoading: pricesLoading } = usePrices()
+  const { selectedNetwork } = useNetwork()
 
   if (pricesLoading || !prices) {
     return <Text style={appStyles.walletHeadline}>Balance: ...</Text>
@@ -28,5 +30,9 @@ export function AccountFeaturePortfolioValue({ address }: { address: Address }) 
     (usdtBalance ?? 0) * (prices.USDT ?? 0) +
     (skrBalance ?? 0) * (prices.SKR ?? 0)
 
-  return <Text style={appStyles.walletHeadline}>Balance: ${totalUsd.toFixed(2)}</Text>
+  return (
+    <Text style={appStyles.walletHeadline}>
+      Balance ({selectedNetwork.label.toLowerCase()}): ${totalUsd.toFixed(2)}
+    </Text>
+  )
 }

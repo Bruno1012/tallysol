@@ -3,6 +3,8 @@ import { Address } from '@solana/kit'
 import { CURRENCIES, Currency } from '@/constants/currencies'
 import { useAccountGetTokenBalance } from '@/features/account/use-account-get-token-balance'
 import { appStyles } from '@/constants/app-styles'
+import { useIsPlus } from '@/features/plus/use-is-plus'
+import { useNetwork } from '@/features/network/use-network'
 
 function TokenBalanceRow({ address, currency }: { address: Address; currency: Currency }) {
   const { data, isLoading } = useAccountGetTokenBalance({ address, currency })
@@ -18,9 +20,13 @@ function TokenBalanceRow({ address, currency }: { address: Address; currency: Cu
 }
 
 export function AccountFeatureGetTokenBalances({ address }: { address: Address }) {
+  const { isPlus } = useIsPlus()
+  const { selectedNetwork } = useNetwork()
+  // Plus tokens exist only on mainnet, so listing them elsewhere just shows a balance that never loads.
+  const showPlusTokens = isPlus && selectedNetwork.label === 'Mainnet'
   return (
     <>
-      {CURRENCIES.filter((c) => c.mint).map((c) => (
+      {CURRENCIES.filter((c) => c.mint && (!c.plusOnly || showPlusTokens)).map((c) => (
         <TokenBalanceRow key={c.symbol} address={address} currency={c} />
       ))}
     </>
