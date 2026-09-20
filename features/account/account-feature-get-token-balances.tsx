@@ -11,7 +11,7 @@ function TokenBalanceRow({ address, currency }: { address: Address; currency: Cu
   // so, since its real mainnet balance is checked separately for the Plus gate).
   const label = ['USDC', 'USDT', 'SKR'].includes(currency.symbol) ? `${currency.symbol} (devnet)` : currency.symbol
   return (
-    <Text style={appStyles.cardText}>
+    <Text style={appStyles.walletRow}>
       {label}: {isLoading ? '...' : (data ?? 0).toFixed(2)}
     </Text>
   )

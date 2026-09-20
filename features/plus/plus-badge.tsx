@@ -38,15 +38,15 @@ export function PlusBadge() {
   const progress = Math.min(skrBalance / SKR_PLUS_THRESHOLD, 1)
 
   return (
-    <View style={{ alignSelf: 'flex-start', gap: 4, minWidth: 220 }}>
+    <View style={{ alignSelf: 'stretch', gap: 6 }}>
       <View style={{ alignItems: 'center', flexDirection: 'row', gap: 6 }}>
-        <StarIcon size={12} color={Colors.gray} />
-        <Text style={{ color: Colors.gray, fontSize: 12 }}>
+        <StarIcon size={16} color={Colors.gray} />
+        <Text style={{ color: Colors.gray, flex: 1, fontSize: 14, fontWeight: 'bold' }}>
           {skrBalance.toFixed(0)} / {SKR_PLUS_THRESHOLD} SKR (mainnet) to unlock Plus
         </Text>
       </View>
-      <View style={{ height: 6, borderRadius: 3, backgroundColor: '#E5DEEE', overflow: 'hidden' }}>
-        <View style={{ height: '100%', width: `${progress * 100}%`, borderRadius: 3, backgroundColor: Colors.green }} />
+      <View style={{ height: 10, borderRadius: 5, backgroundColor: '#E5DEEE', overflow: 'hidden', width: '100%' }}>
+        <View style={{ height: '100%', width: `${progress * 100}%`, borderRadius: 5, backgroundColor: Colors.green }} />
       </View>
     </View>
   )

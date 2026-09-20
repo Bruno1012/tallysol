@@ -13,7 +13,7 @@ export function AccountFeatureGetBalance({ address }: { address: Address }) {
   // mints — so this label follows whichever network is actually selected
   // instead of being hardcoded, and stays correct if you switch to mainnet.
   return (
-    <Text style={appStyles.cardText}>
+    <Text style={appStyles.walletRow}>
       SOL ({selectedNetwork.label.toLowerCase()}): {isLoading ? '...' : lamportsToSol(data?.value ?? 0n).toFixed(2)}
     </Text>
   )

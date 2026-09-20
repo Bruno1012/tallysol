@@ -25,6 +25,16 @@ export const appStyles = StyleSheet.create({
     color: Colors.purple,
     fontWeight: 'bold',
   },
+  walletHeadline: {
+    color: Colors.purple,
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  walletRow: {
+    color: Colors.purple,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
   input: {
     backgroundColor: Colors.white,
     borderColor: Colors.purple,

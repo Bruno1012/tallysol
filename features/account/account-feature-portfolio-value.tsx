@@ -19,7 +19,7 @@ export function AccountFeaturePortfolioValue({ address }: { address: Address }) 
   const { data: prices, isLoading: pricesLoading } = usePrices()
 
   if (pricesLoading || !prices) {
-    return <Text style={appStyles.cardText}>Balance: ...</Text>
+    return <Text style={appStyles.walletHeadline}>Balance: ...</Text>
   }
 
   const totalUsd =
@@ -28,5 +28,5 @@ export function AccountFeaturePortfolioValue({ address }: { address: Address }) 
     (usdtBalance ?? 0) * (prices.USDT ?? 0) +
     (skrBalance ?? 0) * (prices.SKR ?? 0)
 
-  return <Text style={appStyles.cardText}>Balance: ${totalUsd.toFixed(2)}</Text>
+  return <Text style={appStyles.walletHeadline}>Balance: ${totalUsd.toFixed(2)}</Text>
 }
